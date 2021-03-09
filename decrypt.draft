@@ -1,0 +1,5 @@
+name=decrypt
+desc=Decrypt
+call=/home/root/simple-scripts/gocryptfs.sh
+which=decrypt
+imgFile=nao
