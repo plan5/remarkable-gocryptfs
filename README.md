@@ -48,6 +48,7 @@ I've had trouble using git from entware for pulling packages. So for this guide,
 
 Then enter the directory and compile
 ```sh
+# cd gocryptfs-master
 # ./build-without-openssl.bash
 ```
 
