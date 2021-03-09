@@ -120,5 +120,13 @@ To use the script, you need simple and a launcher. Remux launches xochitl by def
 # systemctl enable --now tarnish
 ```
 
-Download and install the script and the draft file and copy them to the right places:
-(**still needs to be added**)
+Download and install the script (make it executable) and the draft file and copy them to the right places:
+```sh
+# curl https://raw.githubusercontent.com/plan5/remarkable-gocryptfs/main/decrypt.draft > /etc/draft/decrypt.draft
+# curl https://raw.githubusercontent.com/plan5/remarkable-gocryptfs/main/gocryptfs.sh > /home/root/gocryptfs.sh
+# chmod +x /home/root/gocryptfs.sh
+```
+
+You may have to re-import all apps via the menu in Oxide.
+
+From now on, you can decrypt via the simple script before launching xochitl!
