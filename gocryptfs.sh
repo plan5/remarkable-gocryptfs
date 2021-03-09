@@ -54,7 +54,7 @@ function add_keyboard(){
   height=90
   spacex=10
   spacey=10
-  for symbol in {0..9} {a..z} "." "Del" "CLS" "Enter"
+  for symbol in {0..9} {a..z} "." "Del" "CLS" "Enter" "Quit"
   do
       ui button $offsetx $offsety $width $height $symbol
       offsetx=$(( $offsetx + $width + $spacex ))
