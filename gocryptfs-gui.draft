@@ -1,5 +1,5 @@
-name=decrypt
-desc=Decrypt
-call=/home/root/gocryptfs.sh
+name=Gocryptfs-gui
+desc=Decrypt-Profile
+call=/opt/bin/gocryptfs-gui.sh
 which=decrypt
 imgFile=nao
