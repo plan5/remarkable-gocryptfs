@@ -1,7 +1,9 @@
 #!/bin/bash
 
-export LD_PRELOAD=/opt/lib/librm2fb_client.so.1.0.0
+#export LD_PRELOAD=/opt/lib/librm2fb_client.so.1.0.1
 GOCRYPTFS=/home/root/go/bin/gocryptfs
+
+LAUNCHER=xochitl
 
 PATH=/home/root/go/bin:/opt/bin/go/bin:/opt/bin:/opt/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
 
@@ -30,41 +32,12 @@ display(){
   RESULT=$(echo ${script} | /opt/bin/simple)
 }
 
-buttonpress(){
-  button="$(echo "${RESULT}" | sed 's/^selected:\s*//; s/\s* -.*$//' | xargs)"
-  #if [[ $button == "Quit" ]];then
-  #  break
-  #fi
-  case $button in
-    "Quit")
-       exit 0
-       ;;
-    "*")
-       ;;
-  esac
+evaluate(){
+  #id="$(echo "${RESULT}" | awk -F ": " '{print $2}')"
+  message="$(echo "${RESULT}" | awk -F ": " '{print $3}')"
+  export password="${message}"
+  decrypt
 }
-
-function add_keyboard(){
-  # Add Keyboard
-  posx=900
-  posy=900
-  offsetx=$posx
-  offsety=$posy
-  width=90
-  height=90
-  spacex=10
-  spacey=10
-  for symbol in {0..9} {a..z} "." "Del" "CLS" "Enter" "Quit"
-  do
-      ui button $offsetx $offsety $width $height $symbol
-      offsetx=$(( $offsetx + $width + $spacex ))
-      if [ $offsetx -gt $(( 1404 - $width )) ]
-	then
-	offsetx=$posx
-	offsety=$(( $offsety + $height + $spacey ))
-      fi
-  done
-  }
 
 run_checks(){
   # Check if gocryptfs is in PATH
@@ -78,50 +51,28 @@ run_checks(){
 }
 
 
-function typer(){
-  [[ $password == "Mount failed!" ]]&&password=""
-  case $button in 
-	"Enter")
-	decrypt&&return 1
-	;;
-	"Del")
-	password=${password::-1};
-	;;
-	"CLS")
-	password=""
-	;;
-	*) 
-        password=$password$button
-	;;
-  esac
-}
 
 function decrypt(){
-	echo "$password"|$GOCRYPTFS $CIPHER $PLAIN||password="Mount failed!"
+	echo "$password"|nohup $GOCRYPTFS $CIPHER $PLAIN&&return 1
 }
 
+#Delay start a little for better drawing
+echo ""|simple
+sleep 1
+reset
 
 while :;do
   reset
   add justify left
 
   # Add Input field
-  ui label 50 50 1800 100 $password
-
-  # Add Keyboard
-  add_keyboard
-
-  #run_checks||exit
-
-  # Add wordlist  
-  #  ui label 50 100 900 100 Diceware:
-  #  for word in $(cat /home/root/simple-scripts/eff_large_wordlist.txt|grep $password -|tail -n 20)
-  #	do
-  #	ui label step step 900 100 $word
-  #	done
-
+  ui label 50 160 1300 100 Enter password above, then press \'done\'
+  ui textinput 50 50 1300 100
 
   display
-  buttonpress
-  typer||break
+  evaluate||break
 done
+echo ""|simple
+reset
+sleep 1
+systemctl start $LAUNCHER
