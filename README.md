@@ -13,7 +13,7 @@ I want to share the steps I've taken, but first some warnings:
 
 ## Installing gocryptfs
 
-PSA: A toltec package for gocryptfs is currently under revision for being merged into the testing branch of toltec: [Link to gocryptfs toltec PR](https://github.com/toltec-dev/toltec/pull/318)
+PSA: A toltec package for gocryptfs is currently in the toltec testing branch: [Link to toltec](https://github.com/toltec-dev/toltec/)
 
 It has also turned out that rM1 does not have the needed fuse module built into the kernel. It has to be built separately. The instructions for this are not included here but the package is also in the making: [Fuse kernel module for rM1 PR to toltec testing](https://github.com/toltec-dev/toltec/pull/331/)
 
