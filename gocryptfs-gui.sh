@@ -29,6 +29,7 @@ display(){
   IFS=$(echo -en "\n\b")
   script=$(for line in ${SCENE[@]}; do echo $line; done)
   IFS=" "
+  # TODO remove logging to hide password
   RESULT=$(echo ${script} | /opt/bin/simple)
 }
 
