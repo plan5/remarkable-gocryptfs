@@ -1,0 +1,10 @@
+[Unit]
+Description=reMarvin
+After=home.mount rm2fb.service
+
+[Service]
+Type=forking
+ExecStart=/opt/bin/gocryptfs-gui.sh
+
+[Install]
+WantedBy=multi-user.target
