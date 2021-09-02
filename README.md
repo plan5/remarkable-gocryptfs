@@ -15,7 +15,7 @@ I want to share the steps I've taken, but first some warnings:
 
 PSA: A toltec package for gocryptfs is currently in the toltec testing branch: [Link to toltec](https://github.com/toltec-dev/toltec/)
 
-It has also turned out that rM1 does not have the needed fuse module built into the kernel. It has to be built separately. The instructions for this are not included here but the package is also in the making: [Fuse kernel module for rM1 PR to toltec testing](https://github.com/toltec-dev/toltec/pull/331/)
+It has also turned out that rM1 does not have the needed fuse module built into the kernel. It has to be built separately or install it from toltec (the package is called fuse)
 
 ### Install go
 [SSH into your device](https://remarkablewiki.com/tech/ssh) and have wireless enabled and connected.
