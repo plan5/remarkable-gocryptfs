@@ -1,4 +1,8 @@
 # remarkable-gocryptfs
+
+## THIS APP IS BEING MERGED WITH [remarvin](https://github.com/plan5/remarvin) AND WILL NOT BE MAINTAINED ANYMORE.
+## CHECK OUT REMARVIN FOR A FULLY GUI BASED ENCRYPTION SETUP
+
 A non-failsafe way of encrypting reMarkable tablets' internal storage
 
 So I've taken some steps to encrypt my reMarkable Notebooks on the device with the help of gocryptfs.
